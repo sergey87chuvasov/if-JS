@@ -80,3 +80,103 @@ for (let i = 0; i < arr3.length; i++) {
         console.log('Вывести четное число:', arr3[i])
     }
 }
+
+/* Задача 4 - Функция palindrome (Слово палиндром может читаться справа-налево 
+и слева-направо одинаково. Прим "шалаш".):
+создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, 
+является ли переданное функции слово палиндромом или нет. */
+
+function isPalindrome (words) {
+  // преобраз букв в нижний регистр (на всякий случай) можно и toApperCase
+     words = words.toLowerCase()
+  // сраниваем наше слово с перевернутым словом
+  // метод split - преобр слово в массив из букв ('ш','а','л','а','ш') (добавл пустую строку)
+  // метод reverse - переворачивает массив
+  // метод join - преобразует массив в слово (убирает пустую строку - шалаш)
+   return words === words.split('').reverse().join('')
+}
+console.log(isPalindrome('шаЛаш')); //true
+console.log(isPalindrome('шаГраш')); //false
+
+// 2 вариант 
+
+const isPalindrome2  = str => {
+    str = str.toLowerCase();
+    let str2 = str.split('');
+    str2 = str2.reverse();
+    str2 = str2.join('');
+    if (str==str2) return true;
+    else return false;
+
+    return str2;
+}
+console.log(isPalindrome2('шалаш')); // true
+console.log(isPalindrome2('шалгаш')); // false
+
+/* Задача 5
+Функция min(a, b) и функция max(a,b):
+напишите функцию min(a,b), которая возвращает меньшее из чисел;
+напишите функцию max(a,y), которая возвращает большее из чисел;
+попробуйте переписать функцию, используя тернарный оператор.
+*/
+
+function min(a, b) {
+    if (a < b) {
+      return a;
+    } else {
+      return b;
+    }
+  }
+  console.log(min(3,22));
+  console.log(min(-3,0));
+
+
+  function min(a, b) {
+    return a < b ? a : b;
+  }
+
+
+  function max(a, b) {
+    if (a > b) {
+      return a;
+    } else {
+      return b;
+    }
+  }
+  console.log(max(4,12));
+  console.log(max(-3,3));
+
+  function max(a, b) {
+    return a > b ? a : b;
+  }
+
+  /* Задача 6
+Замена элементов массива:
+создайте массив с десятью случайными элементами от 0 до 100;
+напишите функцию, которая будет заменять все 0 на строку 'zero';
+выведите полученный массив в консоль 
+(пример: [12, 53, '2zero', 18, 22, '1zerozero', 43, 57, '5zero', 1]).
+*/
+
+let arr5 = [1, 5, 10, 33, 100, 50, 2, 7, 80, 0];
+
+function changeZero () {
+  
+  let arr5toString = arr5.toString(); // преобразовали массив в строку (это не массив)
+  // console.log(arr5toString);
+  // console.log(typeof arr5toString);
+  let arr5toPseudo = arr5toString.split(','); // преобр строку обратно в массив
+  // console.log('arr5toPseudo ' + arr5toPseudo); // вывели массив
+  let resultArr = []; // иниц пустой массив
+  for (let i = 0; i < arr5toPseudo.length; i++) {
+    if(!arr5toPseudo[i].includes('0')){ // проверяет, содержит ли строка заданную подстроку
+      resultArr.push(+arr5toPseudo[i]); // если нет склад в resultArr элемент как число
+    } else {
+      var regex = /0/gi; // регуляр выражение для поиска '0'
+        let element = arr5toPseudo[i].replace(regex, 'zero'); // заменяем 0 на зиро и склад в массив резулАрр
+        resultArr.push(element);
+      }
+  }
+  console.log(resultArr);
+ }
+changeZero ();
