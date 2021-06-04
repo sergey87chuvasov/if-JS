@@ -180,3 +180,37 @@ function changeZero () {
   console.log(resultArr);
  }
 changeZero ();
+
+// Задача 7 - Напишите функцию sum, которая возвращает сумму чисел следующим образом:
+// console.log(sum(5)(2)); // 7
+
+function sum(a) {
+  return function (b) {
+      let currentSum = a + b;
+      console.log(currentSum);
+      return currentSum;
+  }
+}
+sum(5)(2);
+
+
+/*  Задача 8 - Покрасьте абзацы по клику (событие click), происх при клике на элемент лев кнопк мыши
+по первому нажатию на абзац он должен покраситься в первый цвет из массива, по второму нажатию - во второй 
+и так далее; цвета из массива меняются бесконечно; все абзацы работают независимо. */
+
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']; // дан массив из 5 цветов [0,1,2,3,4]-индекс, lenght=5
+    let counter = 0; // Завели перемен счетчик, чтобы считать клики (0 - тк число нужно нам а не строка)
+    const paragrap = document.querySelectorAll('p'); // получается NodeList 0,1,2 - инд., length=3, выбрали все параграфы <p></p> или ...All('[id^="text"]')
+    for (let i = 0; i < paragrap.length; i++) {  // пробежимся циклом по параграфам
+      paragrap[i].addEventListener('click', function (e) { // передаем функ котор вызовется по клику
+            let target = e.target; // click по конкретному параграфу
+            for (let i = 0; i < paragrap.length; i++) { // пробегаемся в цикле чтобы сбросить с параграфов все цвета
+              paragrap[i].style.backgroundColor = '';
+            }
+            target.style.backgroundColor = colors[counter]; // colors[0], colors[1] добавляем цвет на параграф
+            counter = counter + 1; // увелечение счетчика клика;
+            if ( counter === colors.length) { // когда счетчик дошел до длины массива
+                counter = 0; // сбросили счетчик кликов на заново
+            }
+        });
+    }
