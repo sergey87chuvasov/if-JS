@@ -214,3 +214,117 @@ const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']; // д
             }
         });
     }
+
+/* Задача - 9 Преобразование формата даты:
+в переменной date лежит дата в формате '2020-11-26';
+преобразуйте эту дату в формат '26.11.2020';
+функция должна быть универсальной, 
+т.е. принимать любую дату и приводить ее к поставленному в задании формату.*/
+
+let date = '2020-11-26';
+
+function changeDate (date) {
+  var arr = date.split('-');
+  // console.log(arr);
+  var newStr = arr[2] + '.' + arr[1] + '.'+arr[0];
+  // console.log(newStr); //получим строку '26.12.2020'
+  return newStr;
+}
+// changeDate();
+console.log('1 вариант:', changeDate('2020-11-26'));
+
+// 2 вариант
+
+let date1 = '2020-11-26';
+function changeDate1 (date) {
+  let newStr = date.split('-').reverse().join('.');
+  // console.log(newStr);
+  return newStr;
+}
+
+// changeDate1();
+console.log('2 вариант:', changeDate1('2020-11-26'));
+
+// 3 вариант 
+
+function getNewFormatDate(date) {
+  let year = getZero(new Date(date).getFullYear());
+  let month = getZero(new Date(date).getMonth() + 1);
+  let day = getZero(new Date(date).getDate());
+  return `${day}.${month}.${year}`;
+}
+
+function getZero(n)
+{
+  if ( n < 10) {
+      return `0${n}`;
+  } else {
+      return n;
+  }
+}
+
+// getNewFormatDate('2020-11-26');
+console.log('3 вариант:', getNewFormatDate('2020-11-26'));
+
+
+/* Задача - 10  Поиск объектов размещения:
+дан массив;
+напишите функцию поиска, которая будет принимать строку;
+по полученной строке найдите все совпадения в массива;
+верните список строк в формате: страна, город, отель.*/
+
+const data = [
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold',
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine',
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship',
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA',
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel',
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
+];
+
+function searchStr(str, arr) {
+  for (let i = 0; i < arr.length; i++) {
+      // console.log(Object.values(arr[i]));
+      if(Object.values(arr[i]).includes(str)) {
+          return Object.values(arr[i]);
+      }
+  }
+  return 'пусто';
+}
+
+console.log(searchStr('France', data ));
+console.log(searchStr('Germany', data ));
