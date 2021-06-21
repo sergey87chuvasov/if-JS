@@ -328,3 +328,398 @@ function searchStr(str, arr) {
 
 console.log(searchStr('France', data ));
 console.log(searchStr('Germany', data ));
+
+/* Задача 11 - Функция palindrome (Слово палиндром может читаться справа-налево и слева-направо одинаково. Прим "шалаш".):
+создайте функцию palindrome, которая будет возвращать bool значение в зависимости от того, является ли переданное функции слово палиндромом или нет;
+теперь уже зная как работать со строками и массивами запишите реализацию этого метода в одну строку. */
+
+function isPalindrome1(words) {
+  words = words.toLowerCase()
+  return words === words.split('').reverse().join('')
+}
+console.log(isPalindrome1('шаЛаш')); //true
+
+/* Задача 12 */
+
+const hotels1 = [
+  {
+    name: 'Hotel Leopold',
+    city: 'Saint Petersburg',
+    country: 'Russia',
+  },
+  {
+    name: 'Apartment Sunshine',
+    city: 'Santa Cruz de Tenerife',
+    country: 'Spain',
+  },
+  {
+    name: 'Villa Kunerad',
+    city: 'Vysokie Tatry',
+    country: 'Slowakia',
+  },
+  {
+    name: 'Hostel Friendship',
+    city: 'Berlin',
+    country: 'Germany',
+  },
+  {
+    name: 'Radisson Blu Hotel',
+    city: 'Kyiv',
+    country: 'Ukraine',
+  },
+  {
+    name: 'Paradise Hotel',
+    city: 'Guadalupe',
+    country: 'Mexico',
+  },
+  {
+    name: 'Hotel Grindewald',
+    city: 'Interlaken',
+    country: 'Switzerland',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Virgin Hotel',
+    city: 'Chicago',
+    country: 'USA',
+  },
+  {
+    name: 'Grand Beach Resort',
+    city: 'Dubai',
+    country: 'United Arab Emirates',
+  },
+  {
+    name: 'Shilla Stay',
+    city: 'Seoul',
+    country: 'South Korea',
+  },
+  {
+    name: 'San Firenze Suites',
+    city: 'Florence',
+    country: 'Italy',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Black Penny Villas',
+    city: 'BTDC, Nuca Dua',
+    country: 'Indonesia',
+  },
+  {
+    name: 'Koko Hotel',
+    city: 'Tokyo',
+    country: 'Japan',
+  },
+  {
+    name: 'Ramada Plaza',
+    city: 'Istanbul',
+    country: 'Turkey',
+  },
+  {
+    name: 'Waikiki Resort Hotel',
+    city: 'Hawaii',
+    country: 'USA',
+  },
+  {
+    name: 'Puro Hotel',
+    city: 'Krakow',
+    country: 'Poland',
+  },
+  {
+    name: 'Asma Suites',
+    city: 'Santorini',
+    country: 'Greece',
+  },
+  {
+    name: 'Cityden Apartments',
+    city: 'Amsterdam',
+    country: 'Netherlands',
+  },
+  {
+    name: 'Mandarin Oriental',
+    city: 'Miami',
+    country: 'USA',
+  },
+  {
+    name: 'Concept Terrace Hotel',
+    city: 'Rome',
+    country: 'Italy',
+  },
+  {
+    name: 'Ponta Mar Hotel',
+    city: 'Fortaleza',
+    country: 'Brazil',
+  },
+  {
+    name: 'Four Seasons Hotel',
+    city: 'Sydney',
+    country: 'Australia',
+  },
+  {
+    name: 'Le Meridien',
+    city: 'Nice',
+    country: 'France',
+  },
+  {
+    name: 'Apart Neptun',
+    city: 'Gdansk',
+    country: 'Poland',
+  },
+  {
+    name: 'Lux Isla',
+    city: 'Ibiza',
+    country: 'Spain',
+  },
+  {
+    name: 'Nox Hostel',
+    city: 'London',
+    country: 'UK',
+  },
+  {
+    name: 'Leonardo Vienna',
+    city: 'Vienna',
+    country: 'Austria',
+  },
+  {
+    name: 'Adagio Aparthotel',
+    city: 'Edinburgh',
+    country: 'UK',
+  },
+  {
+    name: 'Steigenberger Hotel',
+    city: 'Hamburg',
+    country: 'Germany',
+  },
+];
+
+function searchStr1(str, arr) {
+  for (let item of hotels1) {
+    if (Object.values(item).includes(str)) {
+      return Object.values(item);
+    }
+  }
+  return 'пусто';
+}
+
+console.log(searchStr1('Germany', data)); // ["Hostel Friendship", "Berlin", "Germany"]
+
+
+function searchStr2(str) {
+  let countriesArr = []; // создаем пустой массив
+  hotels1.forEach(item => { // пробег по масиву hotels
+    // item = {
+    //     name: 'Steigenberger Hotel',
+    //     city: 'Hamburg',
+    //     country: 'Germany',
+    // }
+    //Object.values(item) = ['Steigenberger Hotel', 'Hamburg', 'Germany']
+    if (Object.values(item).includes(str)) {  // проверка на вхождение заданной строки с элементами массива Object.values(item)
+      countriesArr.push(Object.values(item)); // True - в масстив countriesArr добавляем элемент ( весь массив Object.values(item))
+    }
+  });
+
+  return countriesArr; // возвращаем массив со всеми найденными вхождениями [Arr1, Arr2, ...]
+}
+console.log(searchStr2('Mexico', data)); // ["Hostel Friendship", "Berlin", "Germany"]
+
+
+/* Задача 13
+
+Сопоставте страны с городами из массива:
+дан массив;
+напишите функцию, которая выберет все уникальные страны и сопоставит с ними города;
+в консоли должен быть выведен примерно такой результат:
+{
+   Australia: ['Sydney'],
+   Germany: ['Berlin', 'Hamburg'],
+   Italy: ['Florence', 'Rome'],
+   USA: ['Chicago', 'Hawaii', 'Miami'],
+   Ukraine: ['Kyiv']
+}
+
+*/
+
+const hotels3 = [
+  {
+    name: 'Hotel Leopold',
+    city: 'Saint Petersburg',
+    country: 'Russia',
+  },
+  {
+    name: 'Apartment Sunshine',
+    city: 'Santa Cruz de Tenerife',
+    country: 'Spain',
+  },
+  {
+    name: 'Villa Kunerad',
+    city: 'Vysokie Tatry',
+    country: 'Slowakia',
+  },
+  {
+    name: 'Hostel Friendship',
+    city: 'Berlin',
+    country: 'Germany',
+  },
+  {
+    name: 'Radisson Blu Hotel',
+    city: 'Kyiv',
+    country: 'Ukraine',
+  },
+  {
+    name: 'Paradise Hotel',
+    city: 'Guadalupe',
+    country: 'Mexico',
+  },
+  {
+    name: 'Hotel Grindewald',
+    city: 'Interlaken',
+    country: 'Switzerland',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Virgin Hotel',
+    city: 'Chicago',
+    country: 'USA',
+  },
+  {
+    name: 'Grand Beach Resort',
+    city: 'Dubai',
+    country: 'United Arab Emirates',
+  },
+  {
+    name: 'Shilla Stay',
+    city: 'Seoul',
+    country: 'South Korea',
+  },
+  {
+    name: 'San Firenze Suites',
+    city: 'Florence',
+    country: 'Italy',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Black Penny Villas',
+    city: 'BTDC, Nuca Dua',
+    country: 'Indonesia',
+  },
+  {
+    name: 'Koko Hotel',
+    city: 'Tokyo',
+    country: 'Japan',
+  },
+  {
+    name: 'Ramada Plaza',
+    city: 'Istanbul',
+    country: 'Turkey',
+  },
+  {
+    name: 'Waikiki Resort Hotel',
+    city: 'Hawaii',
+    country: 'USA',
+  },
+  {
+    name: 'Puro Hotel',
+    city: 'Krakow',
+    country: 'Poland',
+  },
+  {
+    name: 'Asma Suites',
+    city: 'Santorini',
+    country: 'Greece',
+  },
+  {
+    name: 'Cityden Apartments',
+    city: 'Amsterdam',
+    country: 'Netherlands',
+  },
+  {
+    name: 'Mandarin Oriental',
+    city: 'Miami',
+    country: 'USA',
+  },
+  {
+    name: 'Concept Terrace Hotel',
+    city: 'Rome',
+    country: 'Italy',
+  },
+  {
+    name: 'Ponta Mar Hotel',
+    city: 'Fortaleza',
+    country: 'Brazil',
+  },
+  {
+    name: 'Four Seasons Hotel',
+    city: 'Sydney',
+    country: 'Australia',
+  },
+  {
+    name: 'Le Meridien',
+    city: 'Nice',
+    country: 'France',
+  },
+  {
+    name: 'Apart Neptun',
+    city: 'Gdansk',
+    country: 'Poland',
+  },
+  {
+    name: 'Lux Isla',
+    city: 'Ibiza',
+    country: 'Spain',
+  },
+  {
+    name: 'Nox Hostel',
+    city: 'London',
+    country: 'UK',
+  },
+  {
+    name: 'Leonardo Vienna',
+    city: 'Vienna',
+    country: 'Austria',
+  },
+  {
+    name: 'Adagio Aparthotel',
+    city: 'Edinburgh',
+    country: 'UK',
+  },
+  {
+    name: 'Steigenberger Hotel',
+    city: 'Hamburg',
+    country: 'Germany',
+  }
+]
+
+  function cityOfCountries(array) {
+    let countryArray = [];
+    for (let item of array) {
+      if (!countryArray.includes(item['country'])) {
+        countryArray.push(item['country']);
+      }
+    }
+    for (let country of countryArray) {
+      let cities = array.filter((item) => {
+        return item.country === country;
+      });
+      console.log('cites', cities);
+      let citiesResult = [];
+      for (let item of cities) {
+        citiesResult.push(item.city);
+      }
+      console.log(country, citiesResult);
+    }
+  }
