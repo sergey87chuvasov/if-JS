@@ -780,3 +780,73 @@ deepEqual(obj1, obj2);
 console.log(deepEqual(obj1, obj2)); // true
 deepEqual(obj1, obj3); 
 console.log(deepEqual(obj1, obj3)); // false
+
+// ДЗ Classes
+
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  }
+];
+
+class User {
+  constructor(param) {  // метод
+    this._firstName = param.firstName;
+    this._lastName = param.lastName;
+  }
+  get fullName() {
+    return this._firstName + ' ' + this._lastName
+  }
+}
+
+class Student extends User {
+  constructor (param) {
+    super(param);
+    this._admissionYear = param.admissionYear;
+    this.courseName = param.courseName;
+  }
+  get course() {
+    return (new Date()).getFullYear() - this._admissionYear;
+  }
+}
+
+class Students {
+  constructor(studentsData) {
+    this.studentsData = studentsData;
+  }
+   getInfo() {
+    return this.studentsData.sort((oneStudent, twoStudent) => new Student(oneStudent).course - new Student(twoStudent).course).map(currentValue => new User(currentValue).fullName + ' - ' + new Student(currentValue).courseName + ', ' + new Student(currentValue).course + ' курс');
+  }
+}
+
+const students = new Students(studentsData);
+console.log(students.getInfo());
+
+//  Выведет:
+// [
+//   'Василий Петров - Java, 1 курс',
+//   'Николай Петров - Android, 1 курс',
+//   'Иван Иванов - JavaScript, 2 курс',
+//   'Александр Федоров - Python, 3 курс',
+// ]
