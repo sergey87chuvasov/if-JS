@@ -197,7 +197,7 @@ sum(5)(2);
 /*  Задача 8 - Покрасьте абзацы по клику (событие click), происх при клике на элемент лев кнопк мыши
 по первому нажатию на абзац он должен покраситься в первый цвет из массива, по второму нажатию - во второй 
 и так далее; цвета из массива меняются бесконечно; все абзацы работают независимо. */
-
+/*
 const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']; // дан массив из 5 цветов [0,1,2,3,4]-индекс, lenght=5
     let counter = 0; // Завели перемен счетчик, чтобы считать клики (0 - тк число нужно нам а не строка)
     const paragrap = document.querySelectorAll('p'); // получается NodeList 0,1,2 - инд., length=3, выбрали все параграфы <p></p> или ...All('[id^="text"]')
@@ -214,7 +214,7 @@ const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']; // д
             }
         });
     }
-
+*/
 /* Задача - 9 Преобразование формата даты:
 в переменной date лежит дата в формате '2020-11-26';
 преобразуйте эту дату в формат '26.11.2020';
@@ -850,3 +850,66 @@ console.log(students.getInfo());
 //   'Иван Иванов - JavaScript, 2 курс',
 //   'Александр Федоров - Python, 3 курс',
 // ]
+
+
+/* ДЗ Advanced JS
+ * Покрасьть абзацы по клику:
+даны 3 абзаца:
+<p id="text1">Text 1</p>
+<p id="text2">Text 2</p>
+<p id="text3">Text 3</p>
+даны цвета:
+const colors = {
+   data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+   [Symbol.iterator]() {
+      // ваш код
+   }
+}
+по первому нажатию на абзац он должен покраситься в первый цвет из массива, по второму нажатию - во второй и так далее;
+все абзацы работают независимо;
+необходимо использовать итераторы (Symbol.iterator) и идентификаторы (Symbol()) для идентификации счетчика;
+Подсказка! Перебор colors должен должен быть бесконечным. Для вызова используйте next(). Т.е. ваш listener должен иметь примерно такой вид:
+const changeStyle = id => event => {
+  event.target.style.color = colors.next(id).value;
+};
+ */
+
+let colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue']
+}
+
+colors[Symbol.iterator] = function () {
+  let index = 0;
+  let data = this.data;
+  let last = this.data.length
+  return {
+    next() {
+      if (index < last) {
+        return {
+          done: false,
+          value: data[index++]
+        };
+      } else {
+        index = 0;
+        return {
+          done: false,
+          value: data[index++]
+        };
+      }
+    }
+
+  }
+};
+
+const changeColorP = (item) => {
+  return (e) => {
+    e.target.style.color = item.next().value;
+  }
+}
+
+const p = document.querySelectorAll('p');
+
+p.forEach((item) => {
+  let iter = colors[Symbol.iterator]();
+  item.addEventListener('click', changeColorP(iter));
+});
