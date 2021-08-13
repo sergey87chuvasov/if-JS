@@ -12,5 +12,11 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-return-assign': 'off',
+    'no-plusplus': 'off',
+    'no-console': 'off',
+    'no-unused-vars': 'off',
+    'no-unused-expressions': 'off',
+    'comma-dangle': 'off'
   },
 };
