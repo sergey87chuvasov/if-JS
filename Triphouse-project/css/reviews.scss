@@ -1,0 +1,232 @@
+    .guests {
+        padding: 60px 0 120px;
+        background-color: $bg;
+        &__title {
+            position: relative;
+            font-weight: 500;
+            font-size: 40px;
+            line-height: 47px;
+            color: $btn_color;
+            padding-bottom: 20px;
+            margin-bottom: 85px;
+            text-align: center;
+        }
+        &__inner {
+            position: relative;
+            &-link {
+                position: absolute;
+                background-image: url("../images/sprites.svg");
+                width: 28px;
+                height: 28px;
+                background-position: 232px 344px;
+                right: -1%;
+                top: 25%;
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                z-index: 5;
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .reviews {
+        &__items {
+            display: flex;
+            justify-content: space-between;
+        }
+        &__item {
+            width: 400px;
+            min-height: 760px;
+            background-color: $signup__bg;
+            &-link {
+                display: block;
+                position: relative;
+            }
+            &-img {
+                width: 100%;
+            }
+            &-price {
+                position: absolute;
+                left: 0;
+                bottom: 4px;
+                background: rgba(56, 56, 56, 0.7);
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 21px;
+                width: 100%;
+                z-index: 4;
+                color: $bg;
+                padding: 16px 24px 11px;
+            }
+        }
+        &__navigation-link {
+            display: none;
+        }
+    }
+    
+    .info {
+        margin: 24px 0 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 24px;
+        &__name {
+            font-size: 18px;
+            line-height: 21px;
+            color: $btn_bg;
+            &-title {
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+            &-text {
+                font-weight: normal;
+            }
+        }
+        &__num {
+            &-rank {
+                background-color: $footer__bg;
+                border-radius: 8px;
+                padding: 4px 11px;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 25px;
+                color: $bg;
+                text-align: center;
+                min-width: 48px;
+                &:hover {
+                    background-color: $color_hover;
+                }
+            }
+            &-reviews {
+                display: block;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: $homes_txt;
+                margin-top: 15px;
+                &:hover {
+                    color: $btn_color;
+                }
+            }
+        }
+    }
+    
+    .person {
+        padding: 0 24px;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        color: $btn_color;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-bottom: 24px;
+        &__link {
+            display: block;
+            background-image: url("../images/sprites.svg");
+            width: 54px;
+            height: 54px;
+            cursor: pointer;
+            background-color: transparent;
+            background-position: 479px 236px;
+            margin-right: 16px;
+        }
+        &__info {
+            &-name {
+                margin-bottom: 8px;
+            }
+        }
+        &__comment {
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            color: $btn_color;
+            padding: 0 24px 24px;
+        }
+    }
+    
+    @media (max-width: 1230px) {
+        .reviews {
+            &__items {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            &__item:nth-child(3) {
+                display: none;
+            }
+        }
+    }
+    
+    @media (max-width: 830px) {
+        .reviews {
+            &__items {
+                justify-content: center;
+            }
+            &__item:nth-child(2) {
+                display: none;
+            }
+        }
+        .guests__inner-link {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .guests {
+            padding: 30px 0 60px;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .guests {
+            padding: 30px 0 30px;
+            &__title {
+                font-size: 35px;
+                line-height: 40px;
+            }
+        }
+        .reviews__item {
+            width: 350px;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        .guests {
+            background-color: $signup__bg;
+            &__title {
+                margin-bottom: 15px;
+                text-transform: capitalize;
+                & span {
+                    display: none;
+                }
+                &:after {
+                    display: none;
+                    padding-bottom: 0;
+                }
+            }
+        }
+        .reviews {
+            &__item {
+                min-height: 700px;
+            }
+            &__navigation-link {
+                display: block;
+            }
+            &__navigation-img {
+                background-color: transparent;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+        .info {
+            padding: 0px 0px;
+            &__num {
+                text-align: end;
+            }
+        }
+        .person {
+            padding: 0px 0px;
+            &__comment {
+                padding: 0 0 24px;
+            }
+        }
+    }

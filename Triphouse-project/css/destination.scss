@@ -1,0 +1,445 @@
+.destination {
+    padding: 120px 0 0;
+    &__title {
+        position: relative;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 47px;
+        color: $btn_color;
+        text-align: center;
+        padding-bottom: 20px;
+        margin-bottom: 84px;
+    }
+}
+
+.slider {
+    &__buttons {
+        background: $bg;
+        max-width: 595px;
+        height: 64px;
+        display: flex;
+        justify-content: left;
+        border-radius: 8px;
+        margin-bottom: 64px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+    &__button {
+        padding: 17px 53px;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        color: $btn_color;
+        cursor: pointer;
+        &:last-child {
+            padding: 17px 25px;
+        }
+        &--active {
+            background: $btn_bg;
+            color: $bg;
+            border-radius: 8px;
+        }
+        &:hover {
+            background: $btn_bg;
+            color: $bg;
+            border-radius: 8px;
+        }
+    }
+    &__items {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 45px;
+        &:hover .slider__item-btn {
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            transform: translateY(0);
+        }
+        &-img {
+            width: 296px;
+            height: 296px;
+            object-fit: cover;
+        }
+        &-btn {
+            background: $bg;
+            border: 1px solid $btn_bg;
+            border-radius: 8px;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            color: $btn_bg;
+            padding: 14px 24px;
+            position: absolute;
+            top: 37%;
+            right: 27%;
+            transform: translateY(500%);
+            cursor: pointer;
+        }
+        &-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 17%;
+            background: rgba(56, 56, 56, 0.4);
+            opacity: 0;
+            transition: all .6s;
+            &--active {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 16%;
+                background: rgba(56, 56, 56, 0.4);
+                opacity: 0.4;
+            }
+        }
+        &:hover .slider__item-link {
+            opacity: 0.4;
+        }
+        &-text {
+            margin-top: 25px;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 28px;
+            color: $btn_bg;
+            text-align: left;
+        }
+    }
+    &__btn--active {
+        position: absolute;
+        background: $bg;
+        border: 1px solid $btn_bg;
+        border-radius: 8px;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        color: $btn_bg;
+        padding: 14px 24px;
+        top: 37%;
+        right: 27%;
+        cursor: pointer;
+        z-index: 5;
+    }
+    &__add-btn {
+        display: block;
+        background-image: url('../images/sprites.svg');
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        background-color: transparent;
+        background-position: 353px 350px;
+        text-align: center;
+        border: none;
+        margin: 0 auto;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+}
+
+.destination__slider-link {
+    display: none;
+}
+
+.signUp {
+    margin: 120px 0 60px;
+    background: $signup__bg;
+    min-height: 200px;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__btn1 {
+        margin: 25px 25px;
+        display: block;
+        background-image: url('../images/sprites.svg');
+        width: 27px;
+        height: 27px;
+        cursor: pointer;
+        background-color: transparent;
+        background-position: 405px 343px;
+        border: none;
+    }
+    &__content {
+        display: flex;
+        justify-content: left;
+        margin-top: 51px;
+        margin-left: 25px;
+        align-items: center;
+        &-link {
+            display: block;
+            background-image: url('../images/sprites.svg');
+            width: 86px;
+            height: 86px;
+            cursor: pointer;
+            background-color: transparent;
+            background-position: 105px 283px;
+        }
+    }
+    &__text {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        color: $btn_color;
+        margin-bottom: 20px;
+    }
+    &__btn2 {
+        font-size: 18px;
+        line-height: 21px;
+        color: $btn_bg;
+        cursor: pointer;
+        padding: 12px 32px;
+        background: $bg;
+        border: 1px solid $btn_bg;
+        border-radius: 8px;
+        &:hover {
+            background: $color_hover;
+            color: $bg;
+        }
+    }
+    &__media {
+        display: none;
+    }
+}
+
+.main__content {
+    margin-left: 24px;
+}
+
+@media (max-width: 1350px) {
+    .slider__items {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 980px) {
+    .slider {
+        &__item-link--active {
+            opacity: 0;
+        }
+        &__btn--active {
+            transform: translateY(500%);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .destination {
+        padding: 60px 0 0;
+        &__title {
+            margin-bottom: 60px;
+        }
+    }
+    .slider {
+        &__buttons {
+            max-width: 539px;
+        }
+        &__button {
+            font-size: 20px;
+        }
+        &__item-img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+    .signUp {
+        margin: 80px 0 60px;
+        &__text {
+            font-size: 20px;
+            line-height: 25px;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .slider {
+        &__item {
+            &:nth-child(4),
+            &:nth-child(3) {
+                display: none;
+            }
+        }
+        &__buttons {
+            max-width: 446px;
+            height: 50px;
+        }
+        &__button {
+            font-size: 17px;
+            padding: 10px 45px;
+            &:last-child {
+                padding: 10px 15px;
+            }
+        }
+    }
+    .signUp {
+        &__text {
+            text-align: left;
+        }
+        &__content {
+            flex-direction: column;
+            margin: 15px auto;
+            align-items: center;
+        }
+        &__btn2 {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .main__content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .destination__title {
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .slider {
+        &__buttons {
+            flex-direction: column;
+            color: $btn_color;
+            height: 49px;
+            margin-bottom: 150px;
+        }
+        &__button {
+            border: 1px solid #000;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        &__item {
+            &-img {
+                width: 150px;
+                height: 150px;
+            }
+            &-text {
+                margin-top: 20px;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+    }
+    .signUp {
+        margin: 50px 0 60px;
+        &__text {
+            text-align: center;
+            font-size: 17px;
+            line-height: 20px;
+            margin-top: 5px;
+        }
+        &__btn1 {
+            margin: 15px 15px;
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .destination {
+        padding: 40px 0 0;
+        &__title {
+            margin-bottom: 30px;
+            font-size: 30px;
+            &:after {
+                display: none;
+            }
+        }
+        &__slider-link {
+            display: block;
+            background-image: url('../images/sprites.svg');
+            width: 28px;
+            height: 28px;
+            background-position: 232px 344px;
+            right: -10px;
+            top: 60px;
+            position: absolute;
+        }
+    }
+    .slider {
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: inherit;
+            height: 49px;
+            width: 0;
+            margin-bottom: 30px;
+        }
+        &__items {
+            position: relative;
+        }
+        &__item-text {
+            font-size: 15px;
+            line-height: 15px;
+        }
+        &__button {
+            margin-right: 10px;
+            padding: 4px 25px;
+            line-height: 25px;
+            &:last-child {
+                overflow: hidden;
+                padding: 5px 72px 5px 30px;
+            }
+        }
+        &__add-btn {
+            display: none;
+        }
+    }
+    .signUp {
+        display: none;
+        margin: 0px 0 40px;
+        &__content {
+            margin-left: 30px;
+        }
+        &__text {
+            text-align: center;
+        }
+        &__media {
+            display: block;
+            padding: 20px 35px;
+            background: $bg;
+            &-link {
+                cursor: pointer;
+                display: block;
+                margin: 0 10px;
+            }
+            &-text {
+                font-size: 12px;
+                line-height: 14px;
+                color: $btn_color;
+                margin-left: 5px;
+            }
+        }
+        &__closed {
+            position: absolute;
+            display: block;
+            background-image: url(../images/sprites.svg);
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            background-color: transparent;
+            background-position: 405px 343px;
+            border: none;
+            top: 15px;
+            left: -35px;
+        }
+        &__btn-install {
+            display: block;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 16px;
+            color: $btn_bg;
+            margin-right: -20px;
+        }
+    }
+    .install__content {
+        display: flex;
+        position: relative;
+        align-items: center;
+    }
+}
