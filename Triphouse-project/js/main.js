@@ -57,7 +57,7 @@ data.forEach((el) => (
     <div style="display: ${count++ < 4 ? 'block' : 'none'}" class="homes__item">
     <img class="homes__item-img" src="${el.imageUrl}" alt="slider pic">
     <a class="slider__title-link" href="#"><h4 class="homes__item-title">${el.name}</h4></a>
-    <p class="homes__item-text">${el.city}, <span class="homes__item-text2">${el.country}</span></p></div>
+    <p class="homes__item-text">${el.city}, ${el.country}</p></div>
     `));
 
 // конкотенация строк при переносе на новую строку
@@ -66,11 +66,17 @@ data.forEach((el) => (
 const btnNext = document.getElementById('btn-next');
 const btnPrev = document.getElementById('btn-prev');
 
+const itemHotel = document.querySelectorAll('.homes__item');
+
 let slideIndex = 0;
-const itemHotel = document.querySelectorAll('.homes__item'); // каждый блок
+const slidesPerPage = 4;
 
-function showNext() {
-  slideIndex += 1;
+function toggleSlider(event) {
+  if (event.target === btnPrev && slideIndex >= 1) {
+    slideIndex -= 1;
+  } else if (event.target === btnNext && (slideIndex + slidesPerPage) < itemHotel.length) {
+    slideIndex += 1;
+  }
 
   for (let i = 0; i < itemHotel.length; i++) {
     if (i >= slideIndex && i <= slideIndex + 3) {
@@ -78,33 +84,17 @@ function showNext() {
     } else {
       itemHotel[i].style.display = 'none';
     }
-    if (slideIndex + 3 === itemHotel.length) {
-      slideIndex = 0;
-      break;
-    }
+  }
+
+  if (slideIndex === 0 || (slideIndex + slidesPerPage) === itemHotel.length) {
+    return;
   }
 }
 
-function showPrev() {
-  slideIndex -= 1;
-
-  for (let i = 0; i < itemHotel.length; i++) {
-    if (i >= slideIndex && i <= slideIndex + 3) {
-      itemHotel[i].style.display = 'block';
-    } else {
-      itemHotel[i].style.display = 'none';
-    }
-    if (slideIndex - 3 === 0) {
-      slideIndex = 0;
-      break;
-    }
-  }
-}
-
-btnNext.addEventListener('click', () => {
-  showNext();
+btnNext.addEventListener('click', (event) => {
+  toggleSlider(event);
 });
 
-btnPrev.addEventListener('click', () => {
-  showPrev();
+btnPrev.addEventListener('click', (event) => {
+  toggleSlider(event);
 });

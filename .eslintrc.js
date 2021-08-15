@@ -17,6 +17,7 @@ module.exports = {
     'no-console': 'off',
     'no-unused-vars': 'off',
     'no-unused-expressions': 'off',
-    'comma-dangle': 'off'
+    'comma-dangle': 'off',
+    'no-useless-return': 'off'
   },
 };
