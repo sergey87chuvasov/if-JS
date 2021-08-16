@@ -1,0 +1,177 @@
+.homes {
+    padding: 120px 0;
+    background: $homes_bg;
+    &__title {
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 47px;
+        color: $btn_color;
+        text-align: center;
+        position: relative;
+        padding-bottom: 20px;
+        margin-bottom: 105px;
+    }
+    &__inner {
+        position: relative;
+    }
+    &__items {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        max-width: 296px;
+        &-title {
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 28px;
+            color: $btn_bg;
+            text-align: left;
+            margin-top: 24px;
+        }
+        &-text {
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 28px;
+            color: $homes_txt;
+            text-align: left;
+            margin-top: 24px;
+        }
+    }
+    &__slider-link {
+        display: block;
+        background-image: url('../images/sprites.svg');
+        width: 41px;
+        height: 40px;
+        cursor: pointer;
+        background-color: transparent;
+        background-position: 291px 350px;
+        position: absolute;
+        right: -15px;
+        top: 35%;
+        transform: translateY(-50%);
+    }
+}
+
+.slider__title-link {
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+}
+
+@media (max-width: 1250px) {
+    .homes {
+        &__items {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        &__item:nth-child(4) {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 980px) {
+    .homes {
+        padding: 80px 0 40px;
+        &__title {
+            margin-bottom: 80px;
+        }
+        &__item {
+            margin-bottom: 50px;
+            &:nth-child(3) {
+                display: none;
+            }
+            &__text {
+                font-size: 20px;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .homes {
+        padding: 40px 0;
+        &__item {
+            margin-bottom: 30px;
+            &-img {
+                max-width: 195px;
+            }
+            &__title {
+                font-size: 22px;
+                line-height: 24px;
+            }
+            &-text {
+                font-size: 16px;
+                line-height: 18px;
+            }
+        }
+        &__slider-link {
+            right: 5px;
+            top: 30%;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .homes__title {
+        font-size: 35px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 460px) {
+    .homes {
+        &__item-img {
+            max-width: 155px;
+        }
+        &__slider-link {
+            right: 45px;
+            top: 28%;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .homes {
+        padding: 40px 0 20px;
+        &__slider-link {
+            background-image: url('../images/sprites.svg');
+            width: 28px;
+            height: 28px;
+            background-position: 232px 344px;
+            right: -15px;
+            top: 30%;
+        }
+        &__title {
+            font-size: 28px;
+            line-height: 33px;
+            margin-bottom: 32px;
+            &::after {
+                display: none;
+            }
+        }
+        &__item {
+            max-width: 155px;
+            &:nth-child(3),
+            &:nth-child(4) {
+                display: none;
+            }
+            &-img {
+                width: 100%;
+            }
+            &-title {
+                font-size: 12px;
+                line-height: 14px;
+                color: $btn_bg;
+                margin-top: 8px;
+            }
+            &-text {
+                font-size: 12px;
+                line-height: 14px;
+                color: $homes_txt;
+                margin-top: 4px;
+            }
+        }
+    }
+}

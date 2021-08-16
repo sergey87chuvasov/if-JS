@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Triphouse-project</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <a href="#" class="logo__img-link">
+          </a>
+          <nav class="nav">
+            <div class="nav__items">
+              <ul class="nav__item">
+                <li>
+                <a class="nav__item-link nav__link--active" href="#">Stays</a>
+                </li>
+                <li>
+                <a class="nav__item-link" href="#">Attractions</a>
+                </li>
+              </ul>
+            </div>
+            <div class="nav__items-user">
+              <button class="nav__item-btn" type="submit" value="night" name="night mode">
+              </button>
+              <a class="user__item-link" href="">
+              </a>
+              <button class="user__item-burger"></button>
+            </div>
+          </nav>
+        </div>
+        <div class="header__content">
+          <h1 class="title">Discover stays to live, work or just relax</h1>
+          <form action="/" method="get">
+          <div class="order__block">
+          <span class="input__name-text" >Your destination or hotel name</span>
+          <span class="input__date-text">Check-in — Check-out</span>
+          </div>
+          <div class="main__board">
+          <div class="block__inner">
+          <div>
+            <label for="name-hotel"></label>
+        <input class="input__name"
+          id="name-hotel"
+          type="search"
+          name="hotelName"
+          placeholder="New York"
+          required
+        /></div>
+        <div class="date__box">
+             <label for="date-hotel"></label>
+        <input class="input__date"
+          id="date-hotel"
+          type="datetime"
+          name="setDate"
+          placeholder="Tue 15 Sept — Sat 19 Sept"
+          min="2020-12-01T00:30"
+          max="2021-01-01T00:00"
+          pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+          required
+        /></div>
+        <div class="count__box">
+            <label for="count-hotel"></label>
+        <input class="input__count"
+          id="count-hotel"
+          type="number"
+          name="setCount"
+          placeholder="2 Adults — 0 Children — 1 Room"
+          required
+        /></div>
+        <div class="button-block">
+            <button class="order__block-btn">Search</button>
+            </div>
+          </div>
+          </div>
+          <div class="order__block-media">
+          <div class="input__name-img">
+            <label for="name__hotel-media"></label>
+        <input class="input__name-media"
+          id="name__hotel-media"
+          type="search"
+          name="hotelDestination"
+          placeholder="Your destination or hotel name"
+          required
+        />
+        </div>
+        <div class="check__date">
+        <div class="check__datein">
+        <p class="check__datein-text">Check-in date</p>
+            <label for="name__hotel-media"></label>
+        <input class="input__checkin-media"
+          id="name__hotel-media"
+          type="text"
+          name="hotelCheckIn"
+          placeholder="Tue 15 Sept 2020"
+          required
+        />
+        </div>
+        <div class="check__dateout">
+        <p class="check__dateout-text">Check-out date</p>
+            <label for="name__hotel-media"></label>
+        <input class="input__checkout-media"
+          id="name__hotel-media"
+          type="search"
+          name="hotelCheckOut"
+          placeholder="Sat 19 Sept 2020"
+          required
+        />
+        </div>
+          </div>
+          <div class="input__Allmaininfo">
+          <div class="input__Allmaininfo-adults" >
+          <p class="input__Allmaininfo-text">Adults</p>
+            <label for="name__hotel-media"></label>
+        <input class="input__adults"
+          id="name__hotel-media"
+          type="number"
+          name="adults"
+          placeholder="2"
+          required
+        />
+        </div>
+        <div class="input__Allmaininfo-children">
+        <p class="input__Allmaininfo-text">Children</p>
+            <label for="name__hotel-media"></label>
+        <input class="input__children"
+          id="name__hotel-media"
+          type="number"
+          name="Children"
+          placeholder="0"
+          required
+        />
+        </div>
+        <div class="input__Allmaininfo-rooms">
+        <p class="input__Allmaininfo-text">Rooms</p>
+            <label for="name__hotel-media"></label>
+        <input class="input__rooms"
+          id="name__hotel-media"
+          type="number"
+          name="Rooms"
+          placeholder="1"
+          required
+        />
+        </div>
+          </div>
+            <div>
+            <button class="order__media-btn">Search</button>
+            </div>
+            </div>
+          </div>
+          </form>
+          <div class="download__info">
+            <a class="download__info-links" href="#"
+              ><img src="./images/google-play.jpg" alt="download link"
+            /></a>
+            <a class="download__info-links" href="#"
+              ><img src="./images/app-store.jpg" alt="download link"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <section class="homes">
+      <div class="container">
+        <h2 class="homes__title title__line">Homes guests loves</h2>
+        
+          <div class="homes__items"></div> 
+            
+            <button id="btn-prev">Prev</button>
+            <button id="btn-next">Next</button>
+            
+    </div>
+    </section>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
