@@ -98,3 +98,168 @@ btnNext.addEventListener('click', (event) => {
 btnPrev.addEventListener('click', (event) => {
   toggleSlider(event);
 });
+
+const mainInput = document.querySelector('.input__count');
+const filterForm = document.querySelector('.filter');
+
+const minusAdult = document.querySelector('#adults__minus');
+const plusAdult = document.querySelector('#adults__plus');
+const inputAdult = document.querySelector('#adults');
+
+const minusRooms = document.querySelector('#rooms__minus');
+const plusRooms = document.querySelector('#rooms__plus');
+const inputRooms = document.querySelector('#rooms');
+
+const minusChildren = document.querySelector('#children__minus');
+const plusChildren = document.querySelector('#children__plus');
+const inputChildren = document.querySelector('#children');
+
+const filterInfo = document.querySelector('.filter__info');
+const infoAges = document.querySelector('#info__ages');
+
+const setFilterForm = () => {
+  filterForm.classList.toggle('visible__on');
+
+  minusAdult.disabled = true;
+  minusAdult.style.border = '1px solid #cecece';
+  minusAdult.style.color = '#cecece';
+
+  minusChildren.disabled = true;
+  minusChildren.style.border = '1px solid #cecece';
+  minusChildren.style.color = '#cecece';
+
+  minusRooms.disabled = true;
+  minusRooms.style.border = '1px solid #cecece';
+  minusRooms.style.color = '#cecece';
+};
+mainInput.addEventListener('click', setFilterForm);
+
+inputAdult.value = 0;
+inputRooms.value = 0;
+inputChildren.value = 0;
+
+const clickAdults = (e) => {
+  e.preventDefault();
+  // console.log(e);
+  if (e.target.classList.contains('num__plus')) {
+    inputAdult.value++;
+  } else if (e.target.classList.contains('num__minus')) {
+    inputAdult.value--;
+  }
+
+  if (inputAdult.value <= 0) {
+    minusAdult.disabled = true;
+    minusAdult.style.border = '1px solid #cecece';
+    minusAdult.style.color = '#cecece';
+  } else {
+    minusAdult.disabled = false;
+    minusAdult.style.border = '1px solid #3077c6';
+    minusAdult.style.color = '#3077c6';
+  }
+
+  if (inputAdult.value >= 30) {
+    plusAdult.disabled = true;
+    plusAdult.style.border = '1px solid #cecece';
+    plusAdult.style.color = '#cecece';
+  } else {
+    plusAdult.disabled = false;
+    plusAdult.style.border = '1px solid #3077c6';
+    plusAdult.style.color = '#3077c6';
+  }
+};
+
+minusAdult.addEventListener('click', clickAdults);
+plusAdult.addEventListener('click', clickAdults);
+
+const clickRooms = (e) => {
+  e.preventDefault();
+  // console.log(e);
+  if (e.target.classList.contains('num__plus')) {
+    inputRooms.value++;
+  } else if (e.target.classList.contains('num__minus')) {
+    inputRooms.value--;
+  }
+
+  if (inputRooms.value <= 0) {
+    minusRooms.disabled = true;
+    minusRooms.style.border = '1px solid #cecece';
+    minusRooms.style.color = '#cecece';
+  } else {
+    minusRooms.disabled = false;
+    minusRooms.style.border = '1px solid #3077c6';
+    minusRooms.style.color = '#3077c6';
+  }
+
+  if (inputRooms.value >= 30) {
+    plusRooms.disabled = true;
+    plusRooms.style.border = '1px solid #cecece';
+    plusRooms.style.color = '#cecece';
+  } else {
+    plusRooms.disabled = false;
+    plusRooms.style.border = '1px solid #3077c6';
+    plusRooms.style.color = '#3077c6';
+  }
+};
+
+minusRooms.addEventListener('click', clickRooms);
+plusRooms.addEventListener('click', clickRooms);
+
+const clickChildren = (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains('num__plus')) {
+    inputChildren.value++;
+  } else if (e.target.classList.contains('num__minus')) {
+    inputChildren.value--;
+  }
+
+  if (inputChildren.value <= 0) {
+    minusChildren.disabled = true;
+    minusChildren.style.border = '1px solid #cecece';
+    minusChildren.style.color = '#cecece';
+  } else {
+    minusChildren.disabled = false;
+    minusChildren.style.border = '1px solid #3077c6';
+    minusChildren.style.color = '#3077c6';
+  }
+
+  if (inputChildren.value >= 10) {
+    plusChildren.disabled = true;
+    plusChildren.style.border = '1px solid #cecece';
+    plusChildren.style.color = '#cecece';
+  } else {
+    plusChildren.disabled = false;
+    plusChildren.style.border = '1px solid #3077c6';
+    plusChildren.style.color = '#3077c6';
+  }
+};
+
+minusChildren.addEventListener('click', clickChildren);
+plusChildren.addEventListener('click', clickChildren);
+
+const ageSelectInc = (e) => {
+  if (inputChildren.value >= 1) {
+    filterInfo.style.display = 'block';
+    for (let i = inputChildren.value; i >= 2 && i < 11; i += 1) {
+      if (i < 11) {
+        const cloneSelect = infoAges.cloneNode(true);
+        cloneSelect.id = '';
+        cloneSelect.classList = 'remoteSelect';
+        infoAges.parentNode.insertBefore(cloneSelect, infoAges.nextSibling);
+        // console.log(cloneSelect);
+      }
+    }
+  }
+};
+
+plusChildren.addEventListener('click', ageSelectInc);
+
+const ageSelectDec = (e) => {
+  const lastSelect = document.querySelector('select.remoteSelect:last-child');
+  if (inputChildren.value < 1) {
+    infoAges.style.display = 'none';
+  } else if (inputChildren.value >= 1) {
+    lastSelect.remove();
+  }
+};
+
+minusChildren.addEventListener('click', ageSelectDec);
