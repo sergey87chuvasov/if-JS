@@ -117,26 +117,39 @@ const inputChildren = document.querySelector('#children');
 const filterInfo = document.querySelector('.filter__info');
 const infoAges = document.querySelector('#info__ages');
 
+const inputCount = document.querySelector('.input__count');
+
+const borderDis = '1px solid #CECECE';
+const colorDis = '#CECECE';
+const borderEn = '1px solid #3077c6';
+const colorEn = '#3077c6';
+
 const setFilterForm = () => {
   filterForm.classList.toggle('visible__on');
 
   minusAdult.disabled = true;
-  minusAdult.style.border = '1px solid #cecece';
-  minusAdult.style.color = '#cecece';
+  minusAdult.style.border = borderDis;
+  minusAdult.style.color = colorDis;
 
   minusChildren.disabled = true;
-  minusChildren.style.border = '1px solid #cecece';
-  minusChildren.style.color = '#cecece';
+  minusChildren.style.border = borderDis;
+  minusChildren.style.color = colorDis;
 
   minusRooms.disabled = true;
-  minusRooms.style.border = '1px solid #cecece';
-  minusRooms.style.color = '#cecece';
+  minusRooms.style.border = borderDis;
+  minusRooms.style.color = colorDis;
 };
 mainInput.addEventListener('click', setFilterForm);
 
 inputAdult.value = 0;
 inputRooms.value = 0;
 inputChildren.value = 0;
+
+const setValue = () => {
+  inputCount.setAttribute('placeholder', 
+  `${inputAdult.value} Adults — ${inputChildren.value} Children — ${inputRooms.value} Room`);
+}
+setValue();
 
 const clickAdults = (e) => {
   e.preventDefault();
@@ -149,23 +162,24 @@ const clickAdults = (e) => {
 
   if (inputAdult.value <= 0) {
     minusAdult.disabled = true;
-    minusAdult.style.border = '1px solid #cecece';
-    minusAdult.style.color = '#cecece';
+    minusAdult.style.border = borderDis;
+    minusAdult.style.color = colorDis;
   } else {
     minusAdult.disabled = false;
-    minusAdult.style.border = '1px solid #3077c6';
-    minusAdult.style.color = '#3077c6';
+    minusAdult.style.border = borderEn;
+    minusAdult.style.color = colorEn;
   }
 
   if (inputAdult.value >= 30) {
     plusAdult.disabled = true;
-    plusAdult.style.border = '1px solid #cecece';
-    plusAdult.style.color = '#cecece';
+    plusAdult.style.border = borderDis;
+    plusAdult.style.color = colorDis;
   } else {
     plusAdult.disabled = false;
-    plusAdult.style.border = '1px solid #3077c6';
-    plusAdult.style.color = '#3077c6';
+    plusAdult.style.border = borderEn;
+    plusAdult.style.color = colorEn;
   }
+  setValue();
 };
 
 minusAdult.addEventListener('click', clickAdults);
@@ -182,23 +196,24 @@ const clickRooms = (e) => {
 
   if (inputRooms.value <= 0) {
     minusRooms.disabled = true;
-    minusRooms.style.border = '1px solid #cecece';
-    minusRooms.style.color = '#cecece';
+    minusRooms.style.border = borderDis;
+    minusRooms.style.color = colorDis;
   } else {
     minusRooms.disabled = false;
-    minusRooms.style.border = '1px solid #3077c6';
-    minusRooms.style.color = '#3077c6';
+    minusRooms.style.border = borderEn;
+    minusRooms.style.color = colorEn;
   }
 
   if (inputRooms.value >= 30) {
     plusRooms.disabled = true;
-    plusRooms.style.border = '1px solid #cecece';
-    plusRooms.style.color = '#cecece';
+    plusRooms.style.border = borderDis;
+    plusRooms.style.color = colorDis;
   } else {
     plusRooms.disabled = false;
-    plusRooms.style.border = '1px solid #3077c6';
-    plusRooms.style.color = '#3077c6';
+    plusRooms.style.border = borderEn;
+    plusRooms.style.color = colorEn;
   }
+  setValue();
 };
 
 minusRooms.addEventListener('click', clickRooms);
@@ -214,23 +229,24 @@ const clickChildren = (e) => {
 
   if (inputChildren.value <= 0) {
     minusChildren.disabled = true;
-    minusChildren.style.border = '1px solid #cecece';
-    minusChildren.style.color = '#cecece';
+    minusChildren.style.border = borderDis;
+    minusChildren.style.color = colorDis;
   } else {
     minusChildren.disabled = false;
-    minusChildren.style.border = '1px solid #3077c6';
-    minusChildren.style.color = '#3077c6';
+    minusChildren.style.border = borderEn;
+    minusChildren.style.color = colorEn;
   }
 
   if (inputChildren.value >= 10) {
     plusChildren.disabled = true;
-    plusChildren.style.border = '1px solid #cecece';
-    plusChildren.style.color = '#cecece';
+    plusChildren.style.border = borderDis;
+    plusChildren.style.color = colorDis;
   } else {
     plusChildren.disabled = false;
-    plusChildren.style.border = '1px solid #3077c6';
-    plusChildren.style.color = '#3077c6';
+    plusChildren.style.border = borderEn;
+    plusChildren.style.color = colorEn;
   }
+  setValue();
 };
 
 minusChildren.addEventListener('click', clickChildren);
@@ -256,10 +272,12 @@ plusChildren.addEventListener('click', ageSelectInc);
 const ageSelectDec = (e) => {
   const lastSelect = document.querySelector('select.remoteSelect:last-child');
   if (inputChildren.value < 1) {
-    infoAges.style.display = 'none';
+    filterInfo.style.display = 'none';
   } else if (inputChildren.value >= 1) {
     lastSelect.remove();
   }
 };
 
 minusChildren.addEventListener('click', ageSelectDec);
+
+
