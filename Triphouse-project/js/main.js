@@ -146,10 +146,30 @@ inputRooms.value = 0;
 inputChildren.value = 0;
 
 const setValue = () => {
-  inputCount.setAttribute('placeholder', 
-  `${inputAdult.value} Adults — ${inputChildren.value} Children — ${inputRooms.value} Room`);
-}
+  if (inputAdult.value > 30) {
+    inputAdult.value = 30;
+  } else if (inputAdult.value < 0) {
+    inputAdult.value = 0;
+  }
+  if (inputChildren.value > 10) {
+    inputChildren.value = 10;
+  } else if (inputChildren.value < 0) {
+    inputChildren.value = 0;
+  }
+  if (inputRooms.value > 30) {
+    inputRooms.value = 30;
+  } else if (inputRooms.value < 0) {
+    inputRooms.value = 0;
+  }
+
+  inputCount.setAttribute('placeholder',
+    `${inputAdult.value} Adults — ${inputChildren.value} Children — ${inputRooms.value} Room`);
+};
 setValue();
+
+inputChildren.addEventListener('input', setValue);
+inputAdult.addEventListener('input', setValue);
+inputRooms.addEventListener('input', setValue);
 
 const clickAdults = (e) => {
   e.preventDefault();
@@ -279,5 +299,3 @@ const ageSelectDec = (e) => {
 };
 
 minusChildren.addEventListener('click', ageSelectDec);
-
-
