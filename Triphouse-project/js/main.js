@@ -204,6 +204,7 @@ const clickAdults = (e) => {
 
 minusAdult.addEventListener('click', clickAdults);
 plusAdult.addEventListener('click', clickAdults);
+inputAdult.addEventListener('input', clickAdults);
 
 const clickRooms = (e) => {
   e.preventDefault();
@@ -238,6 +239,7 @@ const clickRooms = (e) => {
 
 minusRooms.addEventListener('click', clickRooms);
 plusRooms.addEventListener('click', clickRooms);
+inputRooms.addEventListener('input', clickRooms);
 
 const clickChildren = (e) => {
   e.preventDefault();
@@ -271,6 +273,7 @@ const clickChildren = (e) => {
 
 minusChildren.addEventListener('click', clickChildren);
 plusChildren.addEventListener('click', clickChildren);
+inputChildren.addEventListener('input', clickChildren);
 
 const ageSelectInc = (e) => {
   if (inputChildren.value >= 1) {
