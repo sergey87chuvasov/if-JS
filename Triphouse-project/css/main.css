@@ -26,7 +26,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 196px;
+  margin-bottom: 50px;
 }
 
 .logo__img-link {
@@ -122,11 +122,11 @@ body {
   text-align: left;
   max-width: 542px;
   color: #fff;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .order__block {
-  margin-bottom: 24px;
+  margin-bottom: 5px;
 }
 
 .main__board {
@@ -224,9 +224,65 @@ input:focus {
   display: none;
 }
 
+.filter {
+  border-radius: 10px;
+  display: none;
+  padding: 5px 0;
+  width: 250px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+.visible__on {
+  display: block;
+  margin-left: 60%;
+}
+
+.filter__item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
+}
+.num__box-input {
+  width: 108px;
+    height: 30px;
+    margin-top: 0px;
+    border: none;
+    text-align: center;
+}
+.filter__item button {
+  width: 30px;
+  height: 30px;
+  margin-top: 0px;
+  border: 1px solid #3077c6;
+  color: #3077c6;
+  background-color: #ffffff;
+}
+.filter__item span {
+   padding-bottom: 12px;
+}
+.num__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filter__info{
+  padding: 0 15px;
+  margin-top: 15px;
+  display: none;
+}
+.info__rule {
+  margin-bottom: 10px;
+}
+.remoteSelect {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
 .download__info {
   text-align: center;
-  margin-top: 120px;
+  margin-top: 5px;
 }
 .download__info-links {
   margin-right: 16px;
