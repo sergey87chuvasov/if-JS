@@ -1,77 +1,118 @@
-const data = [
-  {
-    name: 'Hotel Leopold',
-    city: 'Saint Petersburg',
-    country: 'Russia',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg',
-  },
-  {
-    name: 'Apartment Sunshine',
-    city: 'Santa  Cruz de Tenerife',
-    country: 'Spain',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg',
-  },
-  {
-    name: 'Villa Kunerad',
-    city: 'Vysokie Tatry',
-    country: 'Slowakia',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg',
-  },
-  {
-    name: 'Hostel Friendship',
-    city: 'Berlin',
-    country: 'Germany',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
-  },
-  {
-    name: 'Radisson Blu Hotel',
-    city: 'Kyiv',
-    country: 'Ukraine',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/radisson-blu-hotel_jwtowg.jpg',
-  },
-  {
-    name: 'Paradise Hotel',
-    city: 'Guadalupe',
-    country: 'Mexico',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/paradise-hotel_i6whae.jpg',
-  },
-  {
-    name: 'Hotel Grindewald',
-    city: 'Interlaken',
-    country: 'Switzerland',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-grindewald_zsjsmy.jpg',
-  },
-  {
-    name: 'The Andaman Resort',
-    city: 'Port Dickson',
-    country: 'Malaysia',
-    imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
-  },
-];
+// const data = [
+//   {
+//     name: 'Hotel Leopold',
+//     city: 'Saint Petersburg',
+//     country: 'Russia',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg',
+//   },
+//   {
+//     name: 'Apartment Sunshine',
+//     city: 'Santa  Cruz de Tenerife',
+//     country: 'Spain',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg',
+//   },
+//   {
+//     name: 'Villa Kunerad',
+//     city: 'Vysokie Tatry',
+//     country: 'Slowakia',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg',
+//   },
+//   {
+//     name: 'Hostel Friendship',
+//     city: 'Berlin',
+//     country: 'Germany',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
+//   },
+//   {
+//     name: 'Radisson Blu Hotel',
+//     city: 'Kyiv',
+//     country: 'Ukraine',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/radisson-blu-hotel_jwtowg.jpg',
+//   },
+//   {
+//     name: 'Paradise Hotel',
+//     city: 'Guadalupe',
+//     country: 'Mexico',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/paradise-hotel_i6whae.jpg',
+//   },
+//   {
+//     name: 'Hotel Grindewald',
+//     city: 'Interlaken',
+//     country: 'Switzerland',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-grindewald_zsjsmy.jpg',
+//   },
+//   {
+//     name: 'The Andaman Resort',
+//     city: 'Port Dickson',
+//     country: 'Malaysia',
+//     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
+//   },
+// ];
 
-const itemsHotel = document.querySelector('.homes__items'); // общая обертка, вставим все объекты
-let count = 0; // делаем счетчик
+// const itemsHotel = document.querySelector('.homes__items'); // общая обертка, вставим все объекты
+// let count = 0; // делаем счетчик
 
-data.forEach((el) => (
-  itemsHotel.innerHTML += `
-    <div style="display: ${count++ < 4 ? 'block' : 'none'}" class="homes__item">
-    <img class="homes__item-img" src="${el.imageUrl}" alt="slider pic">
-    <a class="slider__title-link" href="#"><h4 class="homes__item-title">${el.name}</h4></a>
-    <p class="homes__item-text">${el.city}, ${el.country}</p></div>
-    `));
+// data.forEach((el) => (
+//   itemsHotel.innerHTML += `
+//     <div style="display: ${count++ < 4 ? 'block' : 'none'}" class="homes__item">
+//     <img class="homes__item-img" src="${el.imageUrl}" alt="slider pic">
+//     <a class="slider__title-link" href="#"><h4 class="homes__item-title">${el.name}</h4></a>
+//     <p class="homes__item-text">${el.city}, ${el.country}</p></div>
+//     `));
 
-// конкотенация строк при переносе на новую строку
-// синтаксис js stringTemplate
+/*
+const itemsHotel = document.querySelector('.homes__items');
+let count = 0;
+
+fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+  .then((resp) => resp.json())
+  .then((data) => data.forEach((el) => (
+    itemsHotel.innerHTML += `
+              <div style="display: ${count++ < 4 ? 'block' : 'none'}" class="homes__item">
+              <img class="homes__item-img" style="width: 300px;
+              height: 300px;" src="${el.imageUrl}" alt="slider pic">
+              <a class="slider__title-link" href="#">
+              <h4 class="homes__item-title">${el.name}</h4></a>
+              <p class="homes__item-text">${el.city}, ${el.country}</p></div>
+              `)));
+
+*/
+
+const itemsHotel = document.querySelector('.homes__items');
+let count = 0;
+
+const getHotelDataParams = {
+  url: 'https://fe-student-api.herokuapp.com/api/hotels/popular',
+  params: { method: 'GET' }
+};
+
+const getData = async (params) => await fetch(params.url, params.params)
+  .then((response) => response.json())
+  .then((data) => data)
+  .catch((error) => console.log(error.message));
+
+const getDataHotel = async () => {
+  const dataHotel = await getData(getHotelDataParams);
+  dataHotel.forEach((el) => (
+    itemsHotel.innerHTML += `
+              <div style="display: ${count++ < 4 ? 'block' : 'none'}" class="homes__item">
+              <img class="homes__item-img" style="width: 300px;
+              height: 300px;" src="${el.imageUrl}" alt="slider pic">
+              <a class="slider__title-link" href="#"><h4 class="homes__item-title">${el.name}</h4></a>
+              <p class="homes__item-text">${el.city}, ${el.country}</p></div>
+              `));
+};
+
+getDataHotel();
 
 const btnNext = document.getElementById('btn-next');
 const btnPrev = document.getElementById('btn-prev');
-
-const itemHotel = document.querySelectorAll('.homes__item');
 
 let slideIndex = 0;
 const slidesPerPage = 4;
 
 function toggleSlider(event) {
+  const itemHotel = document.querySelectorAll('.homes__item');
   if (event.target === btnPrev && slideIndex >= 1) {
     slideIndex -= 1;
   } else if (event.target === btnNext && (slideIndex + slidesPerPage) < itemHotel.length) {
