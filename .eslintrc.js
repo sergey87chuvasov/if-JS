@@ -18,6 +18,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-unused-expressions': 'off',
     'comma-dangle': 'off',
-    'no-useless-return': 'off'
+    'no-useless-return': 'off',
+    'no-return-await': 'off'
   },
 };
