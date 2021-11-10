@@ -6,13 +6,25 @@ const getHotelDataParams = {
   params: { method: 'GET' }
 };
 
-const getData = async (params) => await fetch(params.url, params.params)
-  .then((response) => response.json())
-  .then((data) => data)
-  .catch((error) => console.log(error.message));
+const getData = async (params) =>
+  await fetch(params.url, params.params)
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => console.log(error.message));
+
+const getHotelsData = async (params) => {
+  const storageData = sessionStorage.getItem('cacheData');
+
+  if (!storageData) {
+    const hotelsData = await getData(params.url, params.params);
+    sessionStorage.setItem('cacheData', JSON.stringify(hotelsData));
+    console.log(storageData);
+    return hotelsData;
+  } return JSON.parse(storageData);
+};
 
 const getDataHotel = async () => {
-  const dataHotel = await getData(getHotelDataParams);
+  const dataHotel = await getHotelsData(getHotelDataParams);
   dataHotel.forEach((el) => (
     itemsHotel.innerHTML += `
               <div style="display: ${count++ < 4 ? 'block' : 'none'}" class="homes__item">
